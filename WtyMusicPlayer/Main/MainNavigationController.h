@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  MainNavigationController.h
 //  WtyMusicPlayer
 //
 //  Created by cassiopeia on 16/1/8.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface MainNavigationController : UINavigationController
 
 @end
-

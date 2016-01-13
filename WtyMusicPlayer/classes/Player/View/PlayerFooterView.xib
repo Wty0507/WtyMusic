@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="PlayerFooterView">
+            <rect key="frame" x="0.0" y="0.0" width="352" height="81"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C0h-s2-ngx" userLabel="随机播放">
+                    <rect key="frame" x="32" y="25" width="32" height="32"/>
+                    <animations/>
+                    <state key="normal" backgroundImage="iconfont-suijibofang"/>
+                    <connections>
+                        <action selector="randomPlayButtonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="fUx-cN-Zpj"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TfB-bE-NYq" userLabel="上一首">
+                    <rect key="frame" x="96" y="25" width="32" height="32"/>
+                    <animations/>
+                    <state key="normal" backgroundImage="iconfont-shangyishou"/>
+                    <connections>
+                        <action selector="lastButtonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="3XH-Pw-cGW"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="001-d7-jQi" userLabel="播放暂停按钮">
+                    <rect key="frame" x="160" y="25" width="32" height="32"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="32" id="ff1-FH-36g"/>
+                        <constraint firstAttribute="width" constant="32" id="goo-9F-qi5"/>
+                    </constraints>
+                    <state key="normal" backgroundImage="iconfont-bofang"/>
+                    <connections>
+                        <action selector="pauseButtonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="1Gu-oX-S8z"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qK4-aZ-nhS" userLabel="下一首">
+                    <rect key="frame" x="224" y="25" width="32" height="32"/>
+                    <animations/>
+                    <state key="normal" backgroundImage="iconfont-kuaijin"/>
+                    <connections>
+                        <action selector="nextButtonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="psf-E8-9Fl"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sM1-kX-D1T" userLabel="顺序播放">
+                    <rect key="frame" x="288" y="25" width="32" height="32"/>
+                    <animations/>
+                    <state key="normal" backgroundImage="iconfont-ttpodicon"/>
+                    <connections>
+                        <action selector="orderPlayButtonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="i9f-BW-ilC"/>
+                    </connections>
+                </button>
+            </subviews>
+            <animations/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="001-d7-jQi" firstAttribute="top" secondItem="C0h-s2-ngx" secondAttribute="top" id="3a4-F1-TCL"/>
+                <constraint firstItem="001-d7-jQi" firstAttribute="leading" secondItem="TfB-bE-NYq" secondAttribute="trailing" constant="32" id="DLh-0m-s6W"/>
+                <constraint firstItem="sM1-kX-D1T" firstAttribute="height" secondItem="C0h-s2-ngx" secondAttribute="height" id="Emv-Jv-w6p"/>
+                <constraint firstItem="TfB-bE-NYq" firstAttribute="width" secondItem="C0h-s2-ngx" secondAttribute="width" id="K2Q-z9-Y1y"/>
+                <constraint firstItem="001-d7-jQi" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="KhW-1Z-ant"/>
+                <constraint firstItem="qK4-aZ-nhS" firstAttribute="height" secondItem="C0h-s2-ngx" secondAttribute="height" id="PbE-ml-WYM"/>
+                <constraint firstItem="001-d7-jQi" firstAttribute="width" secondItem="C0h-s2-ngx" secondAttribute="width" id="QAY-D4-WwF"/>
+                <constraint firstItem="TfB-bE-NYq" firstAttribute="leading" secondItem="C0h-s2-ngx" secondAttribute="trailing" constant="32" id="RtA-pe-h5J"/>
+                <constraint firstItem="sM1-kX-D1T" firstAttribute="top" secondItem="C0h-s2-ngx" secondAttribute="top" id="T0k-J4-mso"/>
+                <constraint firstItem="TfB-bE-NYq" firstAttribute="top" secondItem="C0h-s2-ngx" secondAttribute="top" id="VBE-1Y-FH3"/>
+                <constraint firstItem="qK4-aZ-nhS" firstAttribute="width" secondItem="C0h-s2-ngx" secondAttribute="width" id="bHu-ag-vEd"/>
+                <constraint firstItem="qK4-aZ-nhS" firstAttribute="top" secondItem="C0h-s2-ngx" secondAttribute="top" id="bac-bk-EGp"/>
+                <constraint firstItem="001-d7-jQi" firstAttribute="height" secondItem="C0h-s2-ngx" secondAttribute="height" id="efe-PA-shp"/>
+                <constraint firstItem="sM1-kX-D1T" firstAttribute="width" secondItem="C0h-s2-ngx" secondAttribute="width" id="fME-kz-Dla"/>
+                <constraint firstItem="sM1-kX-D1T" firstAttribute="leading" secondItem="qK4-aZ-nhS" secondAttribute="trailing" constant="32" id="gge-bQ-uvx"/>
+                <constraint firstItem="TfB-bE-NYq" firstAttribute="height" secondItem="C0h-s2-ngx" secondAttribute="height" id="suK-Sd-vDI"/>
+                <constraint firstItem="001-d7-jQi" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="whL-ON-XUb"/>
+                <constraint firstItem="qK4-aZ-nhS" firstAttribute="leading" secondItem="001-d7-jQi" secondAttribute="trailing" constant="32" id="zXM-ci-tQs"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="LastButton" destination="TfB-bE-NYq" id="8cQ-Wg-y09"/>
+                <outlet property="nextButton" destination="qK4-aZ-nhS" id="loX-6G-Fj9"/>
+                <outlet property="orderPlayButton" destination="sM1-kX-D1T" id="K8f-Bd-SzD"/>
+                <outlet property="pauseButton" destination="001-d7-jQi" id="Gzp-pG-uMk"/>
+                <outlet property="randomPlayButton" destination="C0h-s2-ngx" id="Lv7-6e-3Qn"/>
+            </connections>
+            <point key="canvasLocation" x="279" y="-15.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="iconfont-bofang" width="128" height="128"/>
+        <image name="iconfont-kuaijin" width="128" height="128"/>
+        <image name="iconfont-shangyishou" width="128" height="128"/>
+        <image name="iconfont-suijibofang" width="128" height="128"/>
+        <image name="iconfont-ttpodicon" width="128" height="128"/>
+    </resources>
+</document>
