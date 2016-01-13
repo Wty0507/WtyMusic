@@ -25,6 +25,7 @@
 		34E8D9D11C3FB77600466A77 /* MusicPlayerListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E8D9C61C3FB77600466A77 /* MusicPlayerListTableViewController.m */; };
 		34E8D9D21C3FB77600466A77 /* MusicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E8D9C91C3FB77600466A77 /* MusicModel.m */; };
 		34E8D9D31C3FB77600466A77 /* MusicListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E8D9CC1C3FB77600466A77 /* MusicListCell.m */; };
+		34ED85AE1C462E3700700A6C /* WtyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34ED85AD1C462E3700700A6C /* WtyView.m */; };
 		9B478AFCEC920CFBCA7EB93D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5F780F8E11C51D55E6FC674 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -81,6 +82,8 @@
 		34E8D9C91C3FB77600466A77 /* MusicModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicModel.m; sourceTree = "<group>"; };
 		34E8D9CB1C3FB77600466A77 /* MusicListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicListCell.h; sourceTree = "<group>"; };
 		34E8D9CC1C3FB77600466A77 /* MusicListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicListCell.m; sourceTree = "<group>"; };
+		34ED85AC1C462E3700700A6C /* WtyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WtyView.h; sourceTree = "<group>"; };
+		34ED85AD1C462E3700700A6C /* WtyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WtyView.m; sourceTree = "<group>"; };
 		72B3946F3F178A21F71BCB74 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		A5F780F8E11C51D55E6FC674 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -211,6 +214,7 @@
 		34E8D99E1C3F91DA00466A77 /* other */ = {
 			isa = PBXGroup;
 			children = (
+				34ED85AB1C462E3700700A6C /* MyVIew */,
 				34E7004B1C4367890014CF65 /* UIColor+AddColor */,
 			);
 			path = other;
@@ -304,6 +308,15 @@
 				34049B301C44DE410003ED1B /* PlayerFooterView.xib */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		34ED85AB1C462E3700700A6C /* MyVIew */ = {
+			isa = PBXGroup;
+			children = (
+				34ED85AC1C462E3700700A6C /* WtyView.h */,
+				34ED85AD1C462E3700700A6C /* WtyView.m */,
+			);
+			path = MyVIew;
 			sourceTree = "<group>";
 		};
 		4A2408BBC70FD8FA641FE1FC /* Frameworks */ = {
@@ -508,6 +521,7 @@
 				34E8D9D31C3FB77600466A77 /* MusicListCell.m in Sources */,
 				34E8D9A41C3F91DA00466A77 /* AppDelegate.m in Sources */,
 				34E8D9A91C3F945D00466A77 /* MainNavigationController.m in Sources */,
+				34ED85AE1C462E3700700A6C /* WtyView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

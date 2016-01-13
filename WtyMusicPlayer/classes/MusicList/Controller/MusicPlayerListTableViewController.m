@@ -14,6 +14,8 @@
 // controller
 #import "PlayerController.h"
 
+#import <AVFoundation/AVFoundation.h>
+
 @interface MusicPlayerListTableViewController ()
 // 数据源数组
 @property (nonatomic, strong) NSMutableArray *dataArray;
@@ -31,6 +33,17 @@
     title.textColor = [UIColor whiteColor];
     self.navigationItem.titleView = title;
     
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playEnd) name:AVPlayerItemDidPlayToEndTimeNotification object:nil];
+    
+}
+
+- (void)playEnd
+{
+//    if (self.dataArray.count != 0) {
+//        PlayerController *play = [PlayerController sharedManager];
+//        play.musicModel = self.dataArray[6];
+//    }
 }
 
 #pragma mark - 数据原数组懒加载

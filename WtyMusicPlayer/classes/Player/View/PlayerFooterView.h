@@ -17,6 +17,7 @@ typedef void (^orderPlayButtonBlock) (void);
 
 @interface PlayerFooterView : UIView
 
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UIButton *pauseButton;
 
 @property (nonatomic, strong) randomPlayButtonBlock randomPlayButtonBlock;

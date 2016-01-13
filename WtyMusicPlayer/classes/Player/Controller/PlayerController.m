@@ -12,6 +12,9 @@
 
 #import <AVFoundation/AVFoundation.h>
 
+#import "WtyView.h"
+
+#import "UIColor+AddColor.h"
 
 
 @interface PlayerController ()
@@ -19,7 +22,10 @@
 @property (nonatomic, strong) UIImage *image;
 @property (nonatomic, strong) AVPlayer *player;
 @property (nonatomic, copy) NSString *mp3Url;
-@property (nonatomic, weak) PlayerFooterView *playerFooter;
+@property (nonatomic, strong) PlayerFooterView *playerFooter;
+@property (nonatomic, strong) NSTimer *timer;
+@property (nonatomic, strong) WtyView *wtyView;
+@property (nonatomic, strong) UIImageView *icon;
 @end
 
 @implementation PlayerController
@@ -43,6 +49,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
     self.view.backgroundColor = [UIColor whiteColor];
     
     [self setupNavigationItemWithImageName:@"iconfont-newlisticon06" andFrame:CGRectMake(0, 0, 22, 22) action:@selector(backButtonClick) isLeft:YES];
@@ -64,10 +71,11 @@
 {
     _musicModel = musicModel;
     
-    if (![_musicModel.mp3Url isEqualToString:self.mp3Url]) {
+    if (self.mp3Url != nil && ![_musicModel.mp3Url isEqualToString:self.mp3Url]) {
         
         [self.playerFooter removeFromSuperview];
         [self createPlayer];
+        [self createSingImage];
         [self createFooterView];
     }
 }
@@ -83,23 +91,50 @@
     AVPlayerItem *item = [[AVPlayerItem alloc] initWithURL:[NSURL URLWithString:self.musicModel.mp3Url]];
     
     self.player = [[AVPlayer alloc] initWithPlayerItem:item];
+   // 播放
     [self.player play];
+    
+    [self.timer invalidate];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:0.14 target:self selector:@selector(timerStart) userInfo:nil repeats:YES];
+    
     
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isPlaying"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     self.mp3Url = self.musicModel.mp3Url;
+    
+//    // 播放完毕通知
+//    [[NSNotificationCenter defaultCenter] postNotificationName:AVPlayerItemDidPlayToEndTimeNotification object:nil];
 }
 
 
 - (void)createUI
 {
-//    // 背景
+    
+    self.view.backgroundColor = [UIColor orangeColor];
+//     背景
 //    self.backgroundImage = [[UIImageView alloc] initWithFrame:self.view.bounds];
-//    self.backgroundImage.image = [UIImage imageNamed:@"yunho.jpg"];
+//    self.backgroundImage.image = [UIImage imageNamed:@"background.jpg"];
 //    [self.view addSubview:self.backgroundImage];
     
+    [self createSingImage];
+    
     [self createFooterView];
+}
+
+- (void)createSingImage
+{
+    if (self.icon == nil) {
+        self.icon = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 150, 150)];
+        self.icon.center = self.view.center;
+        self.icon.layer.cornerRadius = 75;
+        self.icon.layer.borderWidth = 3;
+        self.icon.layer.borderColor = [[UIColor colorFromHexCode:@"#ffffff"] CGColor];
+        self.icon.clipsToBounds = YES;
+        [self.view addSubview:self.icon];
+    }
+    
+    [self.icon sd_setImageWithURL:[NSURL URLWithString:self.musicModel.picUrl] placeholderImage:nil];
 }
 
 #pragma mark - 尾部控件
@@ -115,10 +150,10 @@
     
     BOOL isplaying = [[NSUserDefaults standardUserDefaults] boolForKey:@"isPlaying"];
     if (isplaying == YES) {
-        [self.playerFooter.pauseButton setBackgroundImage:[UIImage imageNamed:@"iconfont-bofang"] forState:UIControlStateNormal];
+        [self.playerFooter.pauseButton setBackgroundImage:[UIImage imageNamed:@"iconfont-zanting"] forState:UIControlStateNormal];
     } else
     {
-        [self.playerFooter.pauseButton setBackgroundImage:[UIImage imageNamed:@"iconfont-zanting"] forState:UIControlStateNormal];
+        [self.playerFooter.pauseButton setBackgroundImage:[UIImage imageNamed:@"iconfont-bofang"] forState:UIControlStateNormal];
     }
     
     [self.view addSubview:self.playerFooter];
@@ -141,10 +176,13 @@
         [[NSUserDefaults standardUserDefaults] synchronize];
         if (isplaying == YES) {
             [play.player pause];
-            [play.playerFooter.pauseButton setBackgroundImage:[UIImage imageNamed:@"iconfont-zanting"] forState:UIControlStateNormal];
+            [play.playerFooter.pauseButton setBackgroundImage:[UIImage imageNamed:@"iconfont-bofang"] forState:UIControlStateNormal];
+            [play pausuTimer];
+            
         } else {
             [play.player play];
-            [play.playerFooter.pauseButton setBackgroundImage:[UIImage imageNamed:@"iconfont-bofang"] forState:UIControlStateNormal];
+            [play.playerFooter.pauseButton setBackgroundImage:[UIImage imageNamed:@"iconfont-zanting"] forState:UIControlStateNormal];
+            [play resumeTimer];
         }
         
     }];
@@ -246,11 +284,42 @@
 
 }
 
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - 定时器监听事件
+- (void)timerStart
+{
+    CMTime durationTime = self.player.currentItem.duration;
+    if (CMTIME_IS_INVALID(durationTime)) {
+         self.playerFooter.timeLabel.text = @"";
+    }
+    
+    int duration = [[NSString stringWithFormat:@"%lf",CMTimeGetSeconds(durationTime)] intValue];
+    int current = [[NSString stringWithFormat:@"%lf",CMTimeGetSeconds(self.player.currentItem.currentTime)] intValue];
+    
+    self.playerFooter.timeLabel.text = [NSString stringWithFormat:@"%d:%.2d/%d:%.2d",current/60,current%60,duration/60,duration%60];
+    
+    [self.wtyView removeFromSuperview];
+    
+    if (duration != 0) {
+        self.wtyView = [[WtyView alloc] initWithFrame:CGRectMake(100, 200, 215, 215)];
+        self.wtyView.center = self.view.center;
+        self.wtyView.backgroundColor = [UIColor clearColor];
+        self.wtyView.currentTime = current;
+        self.wtyView.durationTime = duration;
+        [self.view addSubview:self.wtyView];
+    }
+    
 }
 
+#pragma mark - 暂停定时器
+- (void)pausuTimer
+{
+    self.timer.fireDate = [NSDate distantFuture];
+}
+
+#pragma mark 恢复定时器
+- (void)resumeTimer
+{
+    self.timer.fireDate = [NSDate distantPast];
+}
 
 @end
