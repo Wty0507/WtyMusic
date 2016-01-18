@@ -9,11 +9,6 @@
 #import "PlayerFooterView.h"
 
 @interface PlayerFooterView()
-@property (weak, nonatomic) IBOutlet UIButton *randomPlayButton;
-@property (weak, nonatomic) IBOutlet UIButton *LastButton;
-
-@property (weak, nonatomic) IBOutlet UIButton *nextButton;
-@property (weak, nonatomic) IBOutlet UIButton *orderPlayButton;
 
 
 @end

@@ -42,7 +42,7 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sM1-kX-D1T" userLabel="顺序播放">
                     <rect key="frame" x="325" y="44" width="32" height="32"/>
                     <animations/>
-                    <state key="normal" backgroundImage="iconfont-ttpodicon"/>
+                    <state key="normal" backgroundImage="iconfont-shunxubofang"/>
                     <connections>
                         <action selector="orderPlayButtonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="i9f-BW-ilC"/>
                     </connections>
@@ -53,8 +53,8 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="16" id="R8L-hs-ACH"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qK4-aZ-nhS" userLabel="下一首">
@@ -93,11 +93,11 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="LastButton" destination="TfB-bE-NYq" id="8cQ-Wg-y09"/>
-                <outlet property="nextButton" destination="qK4-aZ-nhS" id="loX-6G-Fj9"/>
-                <outlet property="orderPlayButton" destination="sM1-kX-D1T" id="K8f-Bd-SzD"/>
+                <outlet property="LastButton" destination="TfB-bE-NYq" id="IiZ-tK-iJV"/>
+                <outlet property="nextButton" destination="qK4-aZ-nhS" id="n22-4f-672"/>
+                <outlet property="orderPlayButton" destination="sM1-kX-D1T" id="BF4-Xg-kxl"/>
                 <outlet property="pauseButton" destination="001-d7-jQi" id="Gzp-pG-uMk"/>
-                <outlet property="randomPlayButton" destination="C0h-s2-ngx" id="Lv7-6e-3Qn"/>
+                <outlet property="randomPlayButton" destination="C0h-s2-ngx" id="DEb-OP-HPK"/>
                 <outlet property="timeLabel" destination="cjF-6Q-VaO" id="Lur-SI-1kQ"/>
             </connections>
             <point key="canvasLocation" x="332" y="118"/>
@@ -107,7 +107,7 @@
         <image name="iconfont-bofang" width="128" height="128"/>
         <image name="iconfont-kuaijin" width="128" height="128"/>
         <image name="iconfont-shangyishou" width="128" height="128"/>
+        <image name="iconfont-shunxubofang" width="128" height="128"/>
         <image name="iconfont-suijibofang" width="128" height="128"/>
-        <image name="iconfont-ttpodicon" width="128" height="128"/>
     </resources>
 </document>

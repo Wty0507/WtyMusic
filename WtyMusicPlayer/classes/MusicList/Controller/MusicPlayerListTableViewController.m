@@ -19,6 +19,7 @@
 @interface MusicPlayerListTableViewController ()
 // 数据源数组
 @property (nonatomic, strong) NSMutableArray *dataArray;
+@property (nonatomic, assign) NSInteger row;
 @end
 
 @implementation MusicPlayerListTableViewController
@@ -33,17 +34,55 @@
     title.textColor = [UIColor whiteColor];
     self.navigationItem.titleView = title;
     
-    
+    // 监听播放完毕通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playEnd) name:AVPlayerItemDidPlayToEndTimeNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushPlayerViewController) name:@"推出播放页面" object:nil];
     
 }
 
+#pragma mark - 通知事件
+#pragma mark 推出播放页面
+- (void)pushPlayerViewController
+{
+    PlayerController *player = [PlayerController sharedManager];
+    [self.navigationController pushViewController:player animated:YES];
+}
+
+
+#pragma mark 一首歌播放结束后
 - (void)playEnd
 {
-//    if (self.dataArray.count != 0) {
-//        PlayerController *play = [PlayerController sharedManager];
-//        play.musicModel = self.dataArray[6];
-//    }
+    BOOL sequential = [[NSUserDefaults standardUserDefaults] boolForKey:@"sequentialPlay"];
+    
+    NSInteger count = self.dataArray.count;
+#pragma mark 随机播放
+    if (sequential == NO) {
+        if (count > 1) {
+            NSInteger number = arc4random() % count;
+            while (number != self.row) {
+                self.row = number;
+                PlayerController *play = [PlayerController sharedManager];
+                play.musicModel = self.dataArray[self.row];
+              
+            }
+        }
+    }
+    
+#pragma mark 顺序播放
+    else
+    {
+        // 是最后一首 播放第一首
+        if (self.row == count - 1) {
+            self.row = 0;
+        } else {
+            self.row += 1;
+        }
+        
+        PlayerController *play = [PlayerController sharedManager];
+        play.musicModel = self.dataArray[self.row];
+    }
+    
 }
 
 #pragma mark - 数据原数组懒加载
@@ -82,8 +121,8 @@
 {
     PlayerController *play = [PlayerController sharedManager];
     play.musicModel = self.dataArray[indexPath.row];
+    self.row = indexPath.row;
     [self.navigationController pushViewController:play animated:YES];
-
 }
 
 @end

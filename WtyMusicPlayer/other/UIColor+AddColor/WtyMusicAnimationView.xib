@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="WtyMusicAnimationView">
+            <rect key="frame" x="0.0" y="0.0" width="222" height="97"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DRl-0l-yCG">
+                    <rect key="frame" x="-9" y="-15" width="240" height="128"/>
+                    <animations/>
+                </imageView>
+            </subviews>
+            <animations/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="DRl-0l-yCG" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="TZb-2d-2xY"/>
+                <constraint firstItem="DRl-0l-yCG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Xq3-kt-ETx"/>
+                <constraint firstAttribute="trailing" secondItem="DRl-0l-yCG" secondAttribute="trailing" id="eEi-JW-tg7"/>
+                <constraint firstAttribute="bottom" secondItem="DRl-0l-yCG" secondAttribute="bottom" id="zzd-JR-ZbN"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="imageView" destination="DRl-0l-yCG" id="ev6-cP-LHs"/>
+            </connections>
+            <point key="canvasLocation" x="312" y="366.5"/>
+        </view>
+    </objects>
+</document>

@@ -7,7 +7,16 @@
 //
 
 #import "MainNavigationController.h"
+
+// controller
+#import "PlayerController.h"
+
+// view
+#import "WtyNavigationBar.h"
+
+// tool
 #import "UIColor+AddColor.h"
+
 @interface MainNavigationController ()
 
 @end
@@ -16,7 +25,49 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+   
+    [self deleteNavigationBarLine];
+}
+
++ (void)initialize
+{
+    UINavigationBar *apprence = [UINavigationBar appearance];
+    apprence.barTintColor = [UIColor colorFromHexCode:@"#f6ef37"];
+    
+}
+
+#pragma mark - push方法
+- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    
+    [super pushViewController:viewController animated:animated];
+    
+    if ([viewController isKindOfClass:[PlayerController class]]) {
+       
+        // 替换NavigationBar
+        WtyNavigationBar *wtynaviBar = [[WtyNavigationBar alloc] init];
+        [self setValue:wtynaviBar forKeyPath:@"navigationBar"];
+    }
+}
+
+#pragma mark - pop方法
+- (UIViewController *)popViewControllerAnimated:(BOOL)animated
+{
+    
+    [super popViewControllerAnimated:animated];
+    
+    if (self.childViewControllers.count <= 1) {
+        
+        [self setValue:nil forKeyPath:@"navigationBar"];
+        [self deleteNavigationBarLine];
+    }
+    
+    return self;
+}
+
+#pragma mark - 删除navigationbar底部的线
+- (void)deleteNavigationBarLine
+{
     if ([self.navigationBar respondsToSelector:@selector( setBackgroundImage:forBarMetrics:)]){
         
         NSArray *list=self.navigationBar.subviews;
@@ -34,29 +85,5 @@
         }
     }
 }
-
-+ (void)initialize
-{
-    UINavigationBar *apprence = [UINavigationBar appearance];
-    apprence.barTintColor = [UIColor colorFromHexCode:@"#f6ef37"];
-    
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

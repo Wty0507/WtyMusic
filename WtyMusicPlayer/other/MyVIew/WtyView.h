@@ -13,5 +13,6 @@
 @property (nonatomic, assign) NSInteger durationTime;
 @property (nonatomic, assign) NSInteger currentTime;
 
+@property (nonatomic, assign) NSInteger radius;
 
 @end
